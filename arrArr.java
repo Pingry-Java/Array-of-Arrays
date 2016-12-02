@@ -2,34 +2,55 @@ public class arrArr
 {
 	public static void main(String[] args)
 	{
-		print2D(twoDArrayPractice(10, 20));
+		print2D(twoDArrayPractice(10, 10));
 	}
 
-	public static void print2D(int[][] a)
+	public static void print2D(String[][] a)
 	{
+		for(int i = 0; i < a[0].length; i++)
+			System.out.print("-----");
+		System.out.println();
+		System.out.print("|");
 		for(int row = 0; row < a.length; row++)
 		{
 			for(int col = 0; col < a[row].length; col++)
 			{
-				System.out.print(a[row][col] + " ");
+				System.out.print(a[row][col] + " |");
 			}
+			
 			System.out.println();
+			for(int i = 0; i < a[0].length; i++)
+				System.out.print("-----");
+			System.out.println();
+			System.out.print("|");
+
 		}
 	}
 
 	// Any rows or columns!!!  So much more room for activities.
-	public static int[][] twoDArrayPractice(int inputCol, int inputRows)
+	public static String[][] twoDArrayPractice(int inputCol, int inputRows)
 	{
 		int count = 1;
 
-		int[][] a = new int[inputRows][inputCol];
+		String[][] a = new String[inputRows][inputCol];
 
+		int maxLength = String.valueOf(inputCol * inputRows).length();
 
 		for(int rows = 0; rows < inputRows; rows++)
 		{
 			for(int col = 0; col < inputCol; col++)
 			{
-				a[rows][col] = count;
+				String strCount = Integer.toString(count);
+				if (count < 10)
+					for(int i = 1; i < maxLength; i++)
+						strCount = strCount + " ";
+				if (count < 100 && count >= 10)
+					for (int i = 2; i < maxLength; i++)
+						strCount = strCount + " ";
+				if (count < 1000 && count >= 100)
+					for (int i = 3; i < maxLength; i++)
+						strCount = strCount + " ";
+				a[rows][col] = strCount;
 				count++;
 			}
 
